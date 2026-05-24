@@ -57,7 +57,7 @@ const terminalLines = [
     highlight: true,
   },
   { prompt: "vite$", text: "npm run dev -- --for Fiona" },
-  { prompt: "local$", text: "shipment ready: flowers packed for Fiona" },
+  { prompt: "local$", text: "Sunday shipment ready: flowers packed for Fiona" },
 ];
 
 function TypedText({ text, speed = 12 }) {
@@ -140,7 +140,7 @@ function PlaneDelivery() {
             transition={{ duration: 3.1, ease: "easeInOut" }}
           >
             <Plane className="h-6 w-6 fill-champagne" />
-            <span className="font-sans text-sm font-bold">flowers in flight</span>
+            <span className="font-sans text-sm font-bold">Sunday flowers in flight</span>
           </motion.div>
         </motion.div>
 
@@ -150,7 +150,7 @@ function PlaneDelivery() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 0.8 }}
         >
-          Landing softly for my love.
+          Landing softly for my Sunday love.
         </motion.p>
       </div>
     </motion.div>
@@ -194,7 +194,7 @@ export default function TerminalIntro({ onComplete }) {
   const speakGreeting = () => {
     if (!("speechSynthesis" in window)) return;
     window.speechSynthesis.cancel();
-    const voice = new SpeechSynthesisUtterance("Hey my love. Your flowers are being shipped.");
+    const voice = new SpeechSynthesisUtterance("Good morning my love. Your Sunday flowers are being shipped.");
     voice.rate = 0.9;
     voice.pitch = 1.05;
     voice.volume = 0.75;
@@ -304,11 +304,11 @@ export default function TerminalIntro({ onComplete }) {
             Hello Fiona my love ❤️
           </p>
           <h1 className="mt-3 font-display text-4xl font-semibold text-white sm:text-6xl">
-            I know you wanted flowers.
+            Good morning, my love.
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-white/70">
-            Since I cannot bring them personally today, click the plane below
-            and let me ship them to you from Kenya to Dubai.
+            Since I cannot bring Sunday flowers personally today, click the
+            plane below and let me ship softness from Kenya to Dubai.
           </p>
         </div>
 
@@ -336,7 +336,7 @@ export default function TerminalIntro({ onComplete }) {
                   className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-champagne via-pink-300 to-roseglow px-7 py-4 text-sm font-bold uppercase tracking-[0.18em] text-midnight shadow-bloom"
                 >
                   <Plane className="h-5 w-5 fill-midnight" />
-                  Ship My Flowers
+                  Send Sunday Love
                 </motion.button>
               </div>
             ) : phase === "editor" ? (

@@ -4,21 +4,21 @@ import { useEffect, useMemo, useState } from "react";
 import PremiumBouquet from "./PremiumBouquet.jsx";
 
 const loveMessages = [
-  "I love you, my love.",
-  "I am grateful to have you.",
-  "You are the best, you know.",
-  "Your flowers arrived, my love.",
-  "Dubai has you, but my heart still reaches you.",
-  "You are soft, rare, and unforgettable.",
-  "May today treat you gently.",
-  "I am thinking of you right now.",
-  "Distance cannot cancel tenderness.",
+  "Good morning, my love.",
+  "You are cherished, deeply.",
+  "I trust you, and I choose you.",
+  "Your Sunday flowers arrived softly.",
+  "Rest today, my love. You are held.",
+  "I am grateful for your heart.",
+  "You are safe with my love.",
+  "Dubai has you, but my heart is near.",
   "You make love feel calm and real.",
   "I am proud of the woman you are becoming.",
-  "You are my favorite thought.",
+  "You are my favorite Sunday thought.",
   "Your smile still finds me in Kenya.",
-  "You deserve beauty on random days.",
-  "I choose you, even across the miles.",
+  "No pressure, just my love beside you.",
+  "You deserve peace, flowers, and softness.",
+  "I want you to feel wanted, always.",
 ];
 
 const notePositions = [
@@ -32,15 +32,15 @@ const notePositions = [
 
 function getDubaiLine(hour) {
   if (hour >= 5 && hour < 12) {
-    return "Good morning, my love. May Dubai open softly for you today.";
+    return "Good morning, my love. May this Sunday hold you softly and remind you that you are cherished.";
   }
   if (hour >= 12 && hour < 17) {
-    return "I hope your afternoon is gentle, focused, and kind to your heart.";
+    return "This Sunday afternoon, I hope your heart feels peaceful, trusted, and lovingly seen.";
   }
   if (hour >= 17 && hour < 21) {
-    return "As evening settles in Dubai, I hope you feel held and loved.";
+    return "As Sunday evening settles in Dubai, I hope you feel held by my love.";
   }
-  return "Even under Dubai's quiet night sky, you are still on my mind.";
+  return "Even under Sunday night's quiet sky, you are still my sweetest thought.";
 }
 
 function LoveClock({ time, date, line, hour, minute, second }) {
@@ -49,7 +49,7 @@ function LoveClock({ time, date, line, hour, minute, second }) {
   const secondAngle = second * 6;
 
   return (
-    <div className="mt-8 flex flex-col items-center gap-5 rounded-[2rem] border border-rose-200/20 bg-white/[0.08] p-6 text-center shadow-[0_0_42px_rgba(255,111,157,0.18),inset_0_0_32px_rgba(255,255,255,0.06)] backdrop-blur-xl sm:flex-row sm:text-left">
+    <div className="mt-8 flex flex-col items-center gap-5 rounded-[2rem] border border-champagne/25 bg-white/[0.09] p-6 text-center shadow-[0_0_48px_rgba(247,217,156,0.2),0_0_70px_rgba(255,111,157,0.16),inset_0_0_32px_rgba(255,255,255,0.06)] backdrop-blur-xl sm:flex-row sm:text-left">
       <motion.div
         className="relative h-32 w-32 flex-none rounded-full border border-champagne/40 bg-gradient-to-br from-white/15 via-roseglow/15 to-midnight/35 shadow-[0_0_36px_rgba(247,217,156,0.36),inset_0_0_28px_rgba(255,255,255,0.12)]"
         animate={{
@@ -93,6 +93,9 @@ function LoveClock({ time, date, line, hour, minute, second }) {
       </motion.div>
 
       <div>
+        <p className="mb-2 text-xs font-bold uppercase tracking-[0.22em] text-rose-100/80">
+          Sunday morning for Fiona
+        </p>
         <p className="font-display text-3xl font-semibold text-white sm:text-4xl">{time}</p>
         <p className="mt-2 text-xs font-semibold uppercase tracking-[0.16em] text-champagne/80">
           {date}
@@ -188,8 +191,9 @@ export default function SimpleFlowerUniverse() {
 
   return (
     <section className="relative grid min-h-screen place-items-center overflow-hidden px-5 py-8 sm:px-8">
-      <div className="absolute inset-x-0 top-0 mx-auto h-64 max-w-3xl rounded-full bg-champagne/20 blur-3xl" />
-      <div className="absolute bottom-0 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-roseglow/20 blur-3xl" />
+      <div className="absolute inset-x-0 top-0 mx-auto h-72 max-w-4xl rounded-full bg-champagne/25 blur-3xl" />
+      <div className="absolute bottom-0 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-roseglow/20 blur-3xl" />
+      <div className="absolute left-10 top-1/3 h-48 w-48 rounded-full bg-pink-200/10 blur-3xl" />
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-8 lg:grid-cols-[0.88fr_1.12fr]">
         <motion.div
@@ -200,14 +204,14 @@ export default function SimpleFlowerUniverse() {
         >
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/[0.15] bg-white/10 px-4 py-2 text-sm text-petal backdrop-blur-xl">
             <MapPin className="h-4 w-4 text-champagne" />
-            Shipped from Kenya to Dubai
+            Sunday flowers, shipped from Kenya to Dubai
           </div>
           <h1 className="font-display text-5xl font-bold leading-[0.95] text-white sm:text-6xl lg:text-7xl">
-            My love, your flowers found their way to you.
+            Good morning, my love. Your Sunday flowers found you.
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-rose-50/90 lg:mx-0">
-            I could not place them in your hands today, so I made them bloom in
-            a little universe that keeps thinking of you.
+            I want this morning to feel like peace around you: loved, cherished,
+            trusted, and wanted by the man who keeps choosing you.
           </p>
 
           <LoveClock {...dubai} />
