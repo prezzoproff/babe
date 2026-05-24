@@ -30,90 +30,71 @@ const notePositions = [
   { left: "62%", top: "82%" },
 ];
 
-function getDubaiLine(hour) {
-  if (hour >= 5 && hour < 12) {
-    return "Good morning, my love. May this Sunday hold you softly and remind you that you are cherished.";
-  }
-  if (hour >= 12 && hour < 17) {
-    return "This Sunday afternoon, I hope your heart feels peaceful, trusted, and lovingly seen.";
-  }
-  if (hour >= 17 && hour < 21) {
-    return "As Sunday evening settles in Dubai, I hope you feel held by my love.";
-  }
-  return "Even under Sunday night's quiet sky, you are still my sweetest thought.";
-}
+const sundayPromises = [
+  "Loved",
+  "Cherished",
+  "Trusted",
+  "Chosen",
+];
 
-function LoveClock({ time, date, line, hour, minute, second }) {
-  const hourAngle = ((hour % 12) + minute / 60) * 30;
-  const minuteAngle = (minute + second / 60) * 6;
-  const secondAngle = second * 6;
-
+function SundayAura() {
   return (
-    <div className="mt-8 flex flex-col items-center gap-5 rounded-[2rem] border border-champagne/25 bg-white/[0.09] p-6 text-center shadow-[0_0_48px_rgba(247,217,156,0.2),0_0_70px_rgba(255,111,157,0.16),inset_0_0_32px_rgba(255,255,255,0.06)] backdrop-blur-xl sm:flex-row sm:text-left">
+    <div className="relative mt-8 overflow-hidden rounded-[2rem] border border-champagne/25 bg-gradient-to-br from-white/[0.12] via-roseglow/[0.08] to-champagne/[0.06] p-6 text-center shadow-[0_0_58px_rgba(247,217,156,0.2),0_0_90px_rgba(255,111,157,0.16),inset_0_0_36px_rgba(255,255,255,0.08)] backdrop-blur-xl">
       <motion.div
-        className="relative h-32 w-32 flex-none rounded-full border border-champagne/40 bg-gradient-to-br from-white/15 via-roseglow/15 to-midnight/35 shadow-[0_0_36px_rgba(247,217,156,0.36),inset_0_0_28px_rgba(255,255,255,0.12)]"
-        animate={{
-          boxShadow: [
-            "0 0 26px rgba(247,217,156,0.25), inset 0 0 24px rgba(255,255,255,0.1)",
-            "0 0 48px rgba(255,111,157,0.38), inset 0 0 32px rgba(255,255,255,0.16)",
-            "0 0 26px rgba(247,217,156,0.25), inset 0 0 24px rgba(255,255,255,0.1)",
-          ],
-        }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      >
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((tick) => (
-          <span
-            key={tick}
-            className="absolute left-1/2 top-1/2 h-1.5 w-1.5 rounded-full bg-champagne"
-            style={{
-              transform: `translate(-50%, -50%) rotate(${tick * 30}deg) translateY(-50px)`,
-            }}
-          />
-        ))}
-        <motion.span
-          className="absolute left-1/2 top-1/2 h-10 w-1 origin-bottom rounded-full bg-rose-100"
-          style={{
-            transform: `translate(-50%, -100%) rotate(${hourAngle}deg)`,
-          }}
-        />
-        <motion.span
-          className="absolute left-1/2 top-1/2 h-12 w-0.5 origin-bottom rounded-full bg-champagne"
-          style={{
-            transform: `translate(-50%, -100%) rotate(${minuteAngle}deg)`,
-          }}
-        />
-        <motion.span
-          className="absolute left-1/2 top-1/2 h-12 w-px origin-bottom rounded-full bg-roseglow"
-          style={{
-            transform: `translate(-50%, -100%) rotate(${secondAngle}deg)`,
-          }}
-        />
-        <span className="absolute left-1/2 top-1/2 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-champagne to-roseglow shadow-bloom" />
-        <Heart className="absolute bottom-6 left-1/2 h-4 w-4 -translate-x-1/2 fill-roseglow text-roseglow" />
-      </motion.div>
+        className="absolute -left-12 -top-12 h-40 w-40 rounded-full bg-champagne/25 blur-3xl"
+        animate={{ scale: [0.85, 1.2, 0.85], opacity: [0.35, 0.7, 0.35] }}
+        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute -bottom-14 right-4 h-44 w-44 rounded-full bg-roseglow/25 blur-3xl"
+        animate={{ scale: [1.1, 0.88, 1.1], opacity: [0.55, 0.25, 0.55] }}
+        transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut" }}
+      />
 
-      <div>
-        <p className="mb-2 text-xs font-bold uppercase tracking-[0.22em] text-rose-100/80">
-          Sunday morning for Fiona
+      <div className="relative z-10">
+        <div className="mx-auto mb-5 grid h-20 w-20 place-items-center rounded-full border border-champagne/35 bg-white/10 shadow-[0_0_42px_rgba(247,217,156,0.34)]">
+          <motion.div
+            className="grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-champagne via-pink-200 to-roseglow"
+            animate={{ scale: [1, 1.08, 1], rotate: [0, 4, -4, 0] }}
+            transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <Heart className="h-7 w-7 fill-midnight text-midnight" />
+          </motion.div>
+        </div>
+
+        <p className="text-xs font-bold uppercase tracking-[0.24em] text-champagne/90">
+          Sunday softness for Fiona
         </p>
-        <p className="font-display text-3xl font-semibold text-white sm:text-4xl">{time}</p>
-        <p className="mt-2 text-xs font-semibold uppercase tracking-[0.16em] text-champagne/80">
-          {date}
+        <p className="mx-auto mt-4 max-w-xl font-script text-2xl leading-9 text-rose-50/95 sm:text-3xl sm:leading-10">
+          May your morning feel slow, warm, and certain. No doubt, no pressure,
+          just love that trusts you and keeps choosing you gently.
         </p>
-        <p className="mt-4 text-base leading-7 text-rose-50/85">{line}</p>
+
+        <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {sundayPromises.map((promise, index) => (
+            <motion.div
+              key={promise}
+              className="rounded-2xl border border-white/[0.12] bg-midnight/35 px-3 py-3 text-sm font-bold text-white shadow-[0_0_24px_rgba(247,217,156,0.12)]"
+              animate={{ y: [0, index % 2 ? 5 : -5, 0], opacity: [0.86, 1, 0.86] }}
+              transition={{ duration: 4.2 + index * 0.35, repeat: Infinity, ease: "easeInOut" }}
+            >
+              {promise}
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.span
+          className="mx-auto mt-6 block h-px w-44 bg-gradient-to-r from-transparent via-champagne to-transparent"
+          animate={{ opacity: [0.35, 1, 0.35], scaleX: [0.7, 1.08, 0.7] }}
+          transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
+        />
       </div>
     </div>
   );
 }
 
 export default function SimpleFlowerUniverse() {
-  const [now, setNow] = useState(() => new Date());
   const [messageOffset, setMessageOffset] = useState(0);
-
-  useEffect(() => {
-    const timer = window.setInterval(() => setNow(new Date()), 1000);
-    return () => window.clearInterval(timer);
-  }, []);
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -151,38 +132,6 @@ export default function SimpleFlowerUniverse() {
     };
   }, []);
 
-  const dubai = useMemo(() => {
-    const parts = new Intl.DateTimeFormat("en-US", {
-      timeZone: "Asia/Dubai",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      weekday: "long",
-      month: "long",
-      day: "numeric",
-      year: "numeric",
-      hour12: true,
-    }).formatToParts(now);
-
-    const value = (type) => parts.find((part) => part.type === type)?.value ?? "";
-    const hour24 = Number(
-      new Intl.DateTimeFormat("en-US", {
-        timeZone: "Asia/Dubai",
-        hour: "numeric",
-        hourCycle: "h23",
-      }).format(now),
-    );
-
-    return {
-      time: `${value("hour")}:${value("minute")}:${value("second")} ${value("dayPeriod")}`,
-      date: `${value("weekday")}, ${value("month")} ${value("day")}, ${value("year")}`,
-      line: getDubaiLine(hour24),
-      hour: hour24,
-      minute: Number(value("minute")),
-      second: Number(value("second")),
-    };
-  }, [now]);
-
   const orbitNotes = useMemo(
     () =>
       Array.from({ length: 6 }, (_, index) => loveMessages[(messageOffset + index) % loveMessages.length]),
@@ -214,7 +163,7 @@ export default function SimpleFlowerUniverse() {
             trusted, and wanted by the man who keeps choosing you.
           </p>
 
-          <LoveClock {...dubai} />
+          <SundayAura />
         </motion.div>
 
         <div className="relative mx-auto aspect-square w-full max-w-[680px]">
